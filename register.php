@@ -8,21 +8,57 @@
         <style>
             * {
                 box-sizing: border-box;
-                font-family: Sans-Serif;
+                font-family: sans-serif;
             }
             body {
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 min-height: 100vh;
+                background-color: #EBF4DD;
             }
             .container {
-                
+                background-color: #90AB8B;
+                padding: 10px 20px;
+                box-shadow: 0 0 20px #B8DB80;
+            }
+            h1 {
+                text-align: center;
+                margin-bottom: 30px;
             }
             input[type=text],
             input[type=password],
             input[type=email] {
                 width: 100%;
+                height: 40px;
+                padding: 12px 20px;
+                display: inline-block;
+                margin: 8px 0px;
+            }
+            .btn {
+                width: 100%;
+                padding: 14px 20px;
+                margin: 8px 0px;
+                border: none;
+                cursor: pointer;
+                background-color: #3B4953;
+                color: white;
+            }
+            .btn:hover {
+                background-color: #5A7863;
+            }
+            .bottom {
+                margin-top: 10px;
+            }
+            @media (min-width: 668px) {
+                .container {
+                    width: 500px;
+                }
+            }
+            @media (min-width: 1024px) {
+                .container {
+                    width: 600px;
+                }
             }
         </style>
     </head>
@@ -30,10 +66,13 @@
         <div class="container">
             <form action="#">
                 <h1>Register</h1>
-                <input type="text" id="username" placeholder="Username" required>
-                <input type="email" id="email" placeholder="Email" required>
-                <input type="password" id="password" placeholder="Password" required>
-                <input type="submit" value="Register">
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="Enter your username" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+                <button class="btn">Register</button>
             </form>
             <div class="bottom">
                 <span>Already have an account? </span><a href="login.php">login</a>

@@ -59,6 +59,16 @@
 		        gap: 4px;
 		        cursor: pointer;
 		    }
+	        @media (min-width: 668px) {
+                .container {
+                    width: 500px;
+                }
+            }
+            @media (min-width: 1024px) {
+                .container {
+                    width: 600px;
+                }
+            }
 		</style>
 	</head>
 	<body>
