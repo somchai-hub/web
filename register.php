@@ -52,12 +52,12 @@
             }
             @media (min-width: 668px) {
                 .container {
-                    width: 500px;
+                    width: 300px;
                 }
             }
             @media (min-width: 1024px) {
                 .container {
-                    width: 600px;
+                    width: 400px;
                 }
             }
         </style>
