@@ -21,6 +21,7 @@
                 background-color: #90AB8B;
                 padding: 10px 20px;
                 box-shadow: 0 0 20px #B8DB80;
+                border-radius: 10px;
             }
             h1 {
                 text-align: center;
@@ -64,15 +65,15 @@
     </head>
     <body>
         <div class="container">
-            <form action="#">
+            <form action="regis_db.php" method="post">
                 <h1>Register</h1>
                 <label for="username">Username:</label>
-                <input type="text" id="username" placeholder="Enter your username" required>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
                 <label for="email">Email:</label>
-                <input type="email" id="email" placeholder="Enter your email" required>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
                 <label for="password">Password:</label>
-                <input type="password" id="password" placeholder="Enter your password" required>
-                <button class="btn">Register</button>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <button class="btn" name="register">Register</button>
             </form>
             <div class="bottom">
                 <span>Already have an account? </span><a href="login.php">login</a>

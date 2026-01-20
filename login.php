@@ -14,17 +14,27 @@
 		        align-items: center;
 		        display: flex;
 		        min-height: 100vh;
+				background-color: #BBE0EF;
 		    }
 		    .container {
 		        background-color: #F4F4F4;
 		        box-shadow: 0 0 20px #00B7B5;
 		        transform: translate .2s;
 		        padding: 10px 20px;
+				border-radius: 10px;
 		    }
 		    .container h1 {
 		        text-align: center;
 		        margin-bottom: 30px;
 		    }
+			.container .guest-pf {
+				width: 100px;
+				height: 100px;
+				margin-bottom: 30px;
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+			}
 		    input[type=text],
 		    input[type=password] {
 		        height: 40px;
@@ -75,6 +85,7 @@
 		<div class="container">
 			<form action="#">
 			    <h1>Login</h1>
+				<img src="image/profile/guest.png" class="guest-pf">
 			    <label for="username">Username:</label>
 				<input type="text" id="username" placeholder="Enter your username" required>
 				<label for="password">Password:</label>
