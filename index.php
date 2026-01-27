@@ -13,12 +13,13 @@
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&family=Nunito:ital@0;1&display=swap" rel="stylesheet">
         <style>
             * {
-                font-family: "Nunito", sans-serif;
-  				font-optical-sizing: auto;
-  				font-weight: 400;
- 				font-style: normal;
                 margin: 0;
                 padding: 0;
+                font-family: "Noto Sans Thai", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 400;
+                font-style: normal;
+                font-variation-settings: "wdth" 100;
             }
             .head {
                 display: flex;
@@ -27,6 +28,10 @@
             }
             .head h2 {
                 margin: 14px 10px;
+                font-family: "Nunito", sans-serif;
+  				font-optical-sizing: auto;
+  				font-weight: 400;
+ 				font-style: normal;
             }
             .head button {
                 margin: 10px 10px;
@@ -50,6 +55,10 @@
             }
             ul li {
                 float: left;
+                font-family: "Nunito", sans-serif;
+  				font-optical-sizing: auto;
+  				font-weight: 400;
+ 				font-style: normal;
             }
             ul li a {
                 text-decoration: none;
