@@ -8,7 +8,7 @@ if (isset($_POST["login"])) {
 
     $sql = "SELECT * FROM user WHERE username = ?";
     $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt,"s", $username, $password);
+    mysqli_stmt_bind_param($stmt,"s", $username);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
 

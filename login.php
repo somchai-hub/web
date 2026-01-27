@@ -1,20 +1,19 @@
-<?php
-session_start();
-if (!isset($_SESSION['username'])) {
-	header('Location: login.php');
-	exit();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=content-width, initial-scale=1">
 		<title>Local Travel - Login Page</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
 		<style>
 		    * {
 		        box-sizing: border-box;
-		        font-family: Sans-Serif;
+  				font-family: "Nunito", sans-serif;
+  				font-optical-sizing: auto;
+  				font-weight: 400;
+ 				font-style: normal;
 		    }
 		    body {
 		        justify-content: center;
