@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+	header('Location: login.php');
+	exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -83,14 +90,14 @@
 	</head>
 	<body>
 		<div class="container">
-			<form action="#">
+			<form action="login_db.php" method="post">
 			    <h1>Login</h1>
 				<img src="image/profile/guest.png" class="guest-pf">
 			    <label for="username">Username:</label>
-				<input type="text" id="username" placeholder="Enter your username" required>
+				<input type="text" id="username" name="username" placeholder="Enter your username" required>
 				<label for="password">Password:</label>
-				<input type="password" id="password" placeholder="Enter your password" required>
-				<button type="submit">Login</button>
+				<input type="password" id="password" name="password" placeholder="Enter your password" required>
+				<button type="submit" name="login">Login</button>
 				<div class="bottom">
 				    <div class="bottom-remem">
 				        <input type="checkbox" name="remember">
