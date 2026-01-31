@@ -106,5 +106,21 @@
 			    </div>
 			</form>
 		</div>
+		<script>
+			fetch('login_db.php', {
+				method: POST,
+				body: new FormData(loginFom);
+			})
+			.then(response => response.json())
+			.then(data => {
+				if (data.status === 'success') {
+					Swal.fire('Login successfully.').then(() => {
+						window.location.href = 'index.php';
+					})
+				} else {
+					Swal.fire('Some thing went wrong', data.message, error);
+				}
+			})
+		</script>
 	</body>
 </html>

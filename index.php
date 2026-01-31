@@ -21,6 +21,9 @@
                 font-style: normal;
                 font-variation-settings: "wdth" 100;
             }
+            body {
+                background-color: #BFC9D1;
+            }
             .head {
                 display: flex;
                 align-items: center;
@@ -138,7 +141,7 @@
                 color: #666;
             }
             .content-place .box img {
-                width: 50%;
+                width: 500px;
                 height: 300px;
                 background-size: cover;
                 background-position: center;
@@ -185,10 +188,10 @@
             <div class="content-container">
                 <h1>ค้นหาที่เที่ยวในฝันของคุณ</h1>
                 <div class="search-box">
-                    <input type="text" placeholder="คุณอยากไปเที่ยวที่ไหน?">
+                    <input type="text" name="search" placeholder="คุณอยากไปเที่ยวที่ไหน?">
                     <button>ค้นหา</button>
                 </div>
-            </div>
+	    </div>
         </section>
         <div class="content-place">
             <h2>สถานที่ท่องเที่ยว ฝาง</h2>
