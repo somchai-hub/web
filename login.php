@@ -7,6 +7,7 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<style>
 		    * {
 		        box-sizing: border-box;
@@ -89,9 +90,9 @@
 	</head>
 	<body>
 		<div class="container">
-			<form action="login_db.php" method="post">
+			<form id="loginForm" action="login_db.php" method="post">
 			    <h1>Login</h1>
-				<img src="image/profile/guest.png" class="guest-pf">
+				<img src="assets/image/profile/guest.png" class="guest-pf">
 			    <label for="username">Username:</label>
 				<input type="text" id="username" name="username" placeholder="Enter your username" required>
 				<label for="password">Password:</label>
@@ -107,20 +108,27 @@
 			</form>
 		</div>
 		<script>
-			fetch('login_db.php', {
-				method: POST,
-				body: new FormData(loginFom);
-			})
-			.then(response => response.json())
-			.then(data => {
-				if (data.status === 'success') {
-					Swal.fire('Login successfully.').then(() => {
-						window.location.href = 'index.php';
-					})
-				} else {
-					Swal.fire('Some thing went wrong', data.message, error);
-				}
-			})
-		</script>
+        $(document).ready(function() {
+            $('#loginForm').submit(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: "login_db.php",
+                    data: $(this).serialize(),
+                    dataType: "json",
+                    success: function(response) {
+                        if (response.status === 'success') {
+                            window.location.href = response.redirect;
+                        } else {
+                            $('#alertMessage').text(response.message).removeClass('d-none');
+                        }
+                    },
+                    error: function() {
+                        alert('เกิดข้อผิดพลาดในการเชื่อมต่อระบบ');
+                    }
+                });
+            });
+        });
+    </script>
 	</body>
 </html>

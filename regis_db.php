@@ -1,14 +1,16 @@
 <?php
-include("client.php");
+include("includes/client.php");
 
 if (isset($_POST["register"])) {
     $username = $_POST["username"];
     $email = $_POST["email"];
     $password = $_POST["password"];
     
+    $check_query = "SELECT * FROM users WHERE username = '$username' OR email = '$email'";
+    $result = mysqli_query($conn, $check_query);
 
     $password_hash = password_hash($password, PASSWORD_DEFAULT);
-    $sql = "INSERT INTO user (username, password) VALUES (?, ?)";
+    $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
     $stmt = mysqli_prepare($conn, $sql);
 
     if ($stmt) {
