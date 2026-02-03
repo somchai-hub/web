@@ -33,7 +33,7 @@ if (empty($row['cover_image']) || !file_exists($img_path)) {
 ?>
 <?php
 session_start();
-require_once 'includes/db_connect.php';
+require_once '../includes/client.php';
 
 // ตัวแปรสำหรับเก็บข้อมูลผู้ใช้ (ค่าเริ่มต้น)
 $user_data = [

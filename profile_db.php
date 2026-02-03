@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'includes/db_connect.php';
+require_once 'includes/client.php';
 
 if (isset($_POST['update_profile']) && isset($_SESSION['userid'])) {
     
@@ -26,7 +26,7 @@ if (isset($_POST['update_profile']) && isset($_SESSION['userid'])) {
             mysqli_stmt_execute($stmt_pass);
         } else {
             $_SESSION['error'] = "รหัสผ่านใหม่ไม่ตรงกัน";
-            header("Location: profile.php");
+            //header("Location: profile.php");
             exit();
         }
     }

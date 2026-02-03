@@ -1,6 +1,9 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 session_start();
-require_once 'includes/db_connect.php';
+require_once 'includes/client.php';
 
 // ตัวแปรสำหรับเก็บข้อมูลผู้ใช้ (ค่าเริ่มต้น)
 $user_data = [
@@ -359,6 +362,7 @@ if (isset($_SESSION['userid'])) {
             function gotoLogin() {
                 window.location.href = "login.php";
             }
-        </script>
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
