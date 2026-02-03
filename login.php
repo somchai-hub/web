@@ -8,6 +8,7 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 		<style>
 		    * {
 		        box-sizing: border-box;
@@ -90,6 +91,7 @@
 	</head>
 	<body>
 		<div class="container">
+			<div id="alertMessage" class="alert alert-danger d-none"></div>
 			<form id="loginForm" action="login_db.php" method="post">
 			    <h1>Login</h1>
 				<img src="assets/image/profile/guest.png" class="guest-pf">

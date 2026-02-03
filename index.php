@@ -11,6 +11,8 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&family=Nunito:ital@0;1&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <style>
             * {
                 margin: 0;
@@ -80,7 +82,7 @@
                 justify-content: center;
                 align-items: center;
                 text-align: center;
-                background-image: url('image/background/background2.jpg'); 
+                background-image: url('assets/image/background/background2.jpg'); 
                 background-size: cover;
                 background-position: center;
                 background-repeat: no-repeat;
@@ -119,6 +121,9 @@
             }
             .search-box button:hover {
                 background-color: #004d4d;
+            }
+            .search-container .row {
+                margin: 10px;
             }
             .content-place {
                 margin: 12px;
@@ -175,7 +180,7 @@
     </head>
     <body>
         <div class="head">
-            <img src="image/logo/logo.png" width="50px" height="50px" id="logo">
+            <img src="assets/image/logo/logo.png" width="50px" height="50px" id="logo">
             <span><h2>Local Travel</h2></span>
             <button id="login" onclick="gotoLogin()">Login</button>
         </div>
@@ -188,36 +193,64 @@
             <div class="content-container">
                 <h1>ค้นหาที่เที่ยวในฝันของคุณ</h1>
                 <div class="search-box">
-                    <input type="text" name="search" placeholder="คุณอยากไปเที่ยวที่ไหน?">
+                    <input type="text" name="search" id="search_text" placeholder="คุณอยากไปเที่ยวที่ไหน?">
                     <button>ค้นหา</button>
                 </div>
-	    </div>
+	        </div>
+            <script>
+                $(document).ready(function() {
+                    //load_data();
+                    function load_data(query) {
+                        $.ajax({
+                            url: "search_db.php",
+                            method: "POST",
+                            data: {query: query},
+                            success: function(data){
+                                $('#search_result').html(data);
+                            }
+                        });
+                    }
+                    $('#search_text').keyup(function(){
+                        var search = $(this).val();
+                        if(search != '') {
+                            load_data(search);
+                        } else {
+                            //load_data();
+                            $('#search_result').html('');
+                        }
+                    });
+                });
+            </script>
         </section>
+        <div class="-container">
+            <hr class="my-4">
+            <div class="row" id="search_result"></div>
+        </div>
         <div class="content-place">
             <h2>สถานที่ท่องเที่ยว ฝาง</h2>
             <div class="box">
-                <img src="image/places/place1.jpg">
+                <img src="uploads/attractions/place1.jpg">
                 <div class="desc">
                     <h3>ดอยอ่างขาง</h3>
                     <p class="dp">ภูเขา</p>
                 </div>
             </div>
             <div class="box">
-                <img src="image/places/place2.jpg">
+                <img src="uploads/attractions/place2.jpg">
                 <div class="desc">
                     <h3>อุทยานแห่งชาติดอยผ้าห่มปก</h3>
                     <p class="dp">อุทยานแห่งชาติ</p>
                 </div>
             </div>
             <div class="box">
-                <img src="image/places/fang-hot-spring.jpg">
+                <img src="uploads/attractions/fang_hotspring.jpg">
                 <div class="desc">
                     <h3>น้ำพุร้อนฝาง</h3>
                     <p class="dp">บ่อน้ำร้อนและน้ำพุร้อน</p>
                 </div>
             </div>
             <div class="box">
-                <img src="image/places/place3.jpg">
+                <img src="uploads/attractions/place3.jpg">
                 <div class="desc">
                     <h3>สถานีเกษตรหลวงอ่างขาง</h3>
                     <p class="dp">ฟาร์ม</p>
