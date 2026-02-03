@@ -31,6 +31,36 @@ if (empty($row['cover_image']) || !file_exists($img_path)) {
     $img_path = 'https://via.placeholder.com/800x500?text=No+Image';
 }
 ?>
+<?php
+session_start();
+require_once 'includes/db_connect.php';
+
+// ตัวแปรสำหรับเก็บข้อมูลผู้ใช้ (ค่าเริ่มต้น)
+$user_data = [
+    'username' => '',
+    'email' => '',
+    'profile_image' => 'https://cdn-icons-png.flaticon.com/512/149/149071.png' // รูป Default
+];
+
+// ถ้าล็อกอินแล้ว ให้ดึงข้อมูลล่าสุดจาก DB
+if (isset($_SESSION['userid'])) {
+    $uid = $_SESSION['userid'];
+    $sql_user = "SELECT * FROM users WHERE id = '$uid'";
+    $result_user = mysqli_query($conn, $sql_user);
+    
+    if (mysqli_num_rows($result_user) > 0) {
+        $row_user = mysqli_fetch_assoc($result_user);
+        
+        $user_data['username'] = $row_user['username'];
+        $user_data['email'] = $row_user['email'];
+        
+        // เช็ครูปโปรไฟล์
+        if (!empty($row_user['profile_image']) && file_exists('uploads/profiles/' . $row_user['profile_image'])) {
+            $user_data['profile_image'] = 'uploads/profiles/' . $row_user['profile_image'];
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -149,10 +179,17 @@ if (empty($row['cover_image']) || !file_exists($img_path)) {
                     <p class="text-muted">
                         <i class="fas fa-map-marker-alt text-danger"></i> <?php echo $row['location']; ?>
                     </p>
-
                     <h4 class="text-success mb-4">
                         <i class="fas fa-money-bill-wave"></i> <?php echo $row['price_range']; ?>
                     </h4>
+                    <?php if(!empty($row['phone_number'])): ?>
+                    <p class="fs-5 mb-4">
+                        <i class="fas fa-phone-alt text-primary"></i> 
+                        <a href="tel:<?php echo $row['phone_number']; ?>" class="text-decoration-none text-dark">
+                            <?php echo $row['phone_number']; ?>
+                        </a>
+                    </p>
+                    <?php endif; ?>
                     <hr>
                     <h5 class="fw-bold">รายละเอียด</h5>
                     <p class="text-secondary" style="line-height: 1.8;">

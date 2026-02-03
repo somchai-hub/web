@@ -1,3 +1,33 @@
+<?php
+session_start();
+require_once 'includes/db_connect.php';
+
+// ตัวแปรสำหรับเก็บข้อมูลผู้ใช้ (ค่าเริ่มต้น)
+$user_data = [
+    'username' => '',
+    'email' => '',
+    'profile_image' => 'https://cdn-icons-png.flaticon.com/512/149/149071.png' // รูป Default
+];
+
+// ถ้าล็อกอินแล้ว ให้ดึงข้อมูลล่าสุดจาก DB
+if (isset($_SESSION['userid'])) {
+    $uid = $_SESSION['userid'];
+    $sql_user = "SELECT * FROM users WHERE id = '$uid'";
+    $result_user = mysqli_query($conn, $sql_user);
+    
+    if (mysqli_num_rows($result_user) > 0) {
+        $row_user = mysqli_fetch_assoc($result_user);
+        
+        $user_data['username'] = $row_user['username'];
+        $user_data['email'] = $row_user['email'];
+        
+        // เช็ครูปโปรไฟล์
+        if (!empty($row_user['profile_image']) && file_exists('uploads/profiles/' . $row_user['profile_image'])) {
+            $user_data['profile_image'] = 'uploads/profiles/' . $row_user['profile_image'];
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -182,8 +212,76 @@
         <div class="head">
             <img src="assets/image/logo/logo.png" width="50px" height="50px" id="logo">
             <span><h2>Local Travel</h2></span>
+            <span class="text-white me-3 d-none d-md-block">สวัสดี, <?php echo $user_data['username']; ?></span>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#profileModal" class="position-relative">
+                <img src="<?php echo $user_data['profile_image']; ?>" 
+                    class="rounded-circle border border-2 border-white shadow-sm" 
+                    style="width: 45px; height: 45px; object-fit: cover;">
+            </a>
             <button id="login" onclick="gotoLogin()">Login</button>
         </div>
+        <?php if(isset($_SESSION['userid'])): ?>
+        <div class="modal fade" id="profileModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title"><i class="fas fa-user-edit"></i> แก้ไขโปรไฟล์</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <form action="profile_db.php" method="POST" enctype="multipart/form-data">
+                        <div class="modal-body">
+                            <div class="text-center mb-4">
+                                <img src="<?php echo $user_data['profile_image']; ?>" id="previewImg" class="rounded-circle border shadow" style="width: 120px; height: 120px; object-fit: cover;">
+                                <div class="mt-3">
+                                    <label class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-camera"></i> เปลี่ยนรูป
+                                        <input type="file" name="profile_image" id="uploadInput" class="d-none" accept="image/*">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">ชื่อผู้ใช้</label>
+                                <input type="text" class="form-control bg-light" value="<?php echo $user_data['username']; ?>" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">อีเมล</label>
+                                    <input type="email" name="email" class="form-control" value="<?php echo $user_data['email']; ?>" required>
+                                </div>
+                            <hr>
+                            <p class="text-muted small mb-2">เปลี่ยนรหัสผ่าน (เว้นว่างไว้ถ้าไม่ต้องการเปลี่ยน)</p>
+                            <div class="row">
+                                <div class="col-6">
+                                    <input type="password" name="new_password" class="form-control form-control-sm" placeholder="รหัสใหม่">
+                                </div>
+                                <div class="col-6">
+                                    <input type="password" name="confirm_password" class="form-control form-control-sm" placeholder="ยืนยันรหัส">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="logout.php" class="btn btn-danger me-auto">ออกจากระบบ</a>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ยกเลิก</button>
+                            <button type="submit" name="update_profile" class="btn btn-primary">บันทึก</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script>
+            document.getElementById('uploadInput').onchange = function (evt) {
+                var tgt = evt.target || window.event.srcElement,
+                files = tgt.files;
+
+                if (FileReader && files && files.length) {
+                    var fr = new FileReader();
+                    fr.onload = function () {
+                        document.getElementById('previewImg').src = fr.result;
+                    }
+                    fr.readAsDataURL(files[0]);
+                }
+            }
+        </script>
+        <?php endif; ?>
         <ul>
             <li><a href="index.php">Home</a></l>
             <li><a href="#">About</a></li>
