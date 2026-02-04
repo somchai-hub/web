@@ -5,11 +5,11 @@ error_reporting(E_ALL);
 session_start();
 require_once 'includes/client.php';
 
-// ตัวแปรสำหรับเก็บข้อมูลผู้ใช้ (ค่าเริ่มต้น)
+// ตัวแปรสำหรับเก็บข้อมูลผู้ใช้
 $user_data = [
     'username' => '',
     'email' => '',
-    'profile_image' => 'https://cdn-icons-png.flaticon.com/512/149/149071.png' // รูป Default
+    'profile_image' => 'https://cdn-icons-png.flaticon.com/512/149/149071.png'
 ];
 
 // ถ้าล็อกอินแล้ว ให้ดึงข้อมูลล่าสุดจาก DB
@@ -24,7 +24,6 @@ if (isset($_SESSION['userid'])) {
         $user_data['username'] = $row_user['username'];
         $user_data['email'] = $row_user['email'];
         
-        // เช็ครูปโปรไฟล์
         if (!empty($row_user['profile_image']) && file_exists('uploads/profiles/' . $row_user['profile_image'])) {
             $user_data['profile_image'] = 'uploads/profiles/' . $row_user['profile_image'];
         }
@@ -217,9 +216,7 @@ if (isset($_SESSION['userid'])) {
             <span><h2>Local Travel</h2></span>
             <span class="text-white me-3 d-none d-md-block">สวัสดี, <?php echo $user_data['username']; ?></span>
             <a href="#" data-bs-toggle="modal" data-bs-target="#profileModal" class="position-relative">
-                <img src="<?php echo $user_data['profile_image']; ?>" 
-                    class="rounded-circle border border-2 border-white shadow-sm" 
-                    style="width: 45px; height: 45px; object-fit: cover;">
+                <img src="<?php echo $user_data['profile_image']; ?>" class="rounded-circle border border-2 border-white shadow-sm" style="width: 45px; height: 45px; object-fit: cover;">
             </a>
             <button id="login" onclick="gotoLogin()">Login</button>
         </div>
@@ -287,8 +284,8 @@ if (isset($_SESSION['userid'])) {
         <?php endif; ?>
         <ul>
             <li><a href="index.php">Home</a></l>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="about.php">About</a></li>
+            <li><a href="contact.php">Contact</a></li>
         </ul>
         <section class="hero-section">
             <div class="content-container">
@@ -330,7 +327,7 @@ if (isset($_SESSION['userid'])) {
         <div class="content-place">
             <h2>สถานที่ท่องเที่ยว ฝาง</h2>
             <div class="box">
-                <img src="uploads/attractions/place1.jpg">
+                <img src="uploads/attractions/place1.jpg" class="detail-img">
                 <div class="desc">
                     <h3>ดอยอ่างขาง</h3>
                     <p class="dp">ภูเขา</p>

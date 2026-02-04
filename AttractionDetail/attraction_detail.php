@@ -32,7 +32,6 @@ if (empty($row['cover_image']) || !file_exists($img_path)) {
 }
 ?>
 <?php
-session_start();
 require_once '../includes/client.php';
 
 // ตัวแปรสำหรับเก็บข้อมูลผู้ใช้ (ค่าเริ่มต้น)
@@ -212,4 +211,10 @@ if (isset($_SESSION['userid'])) {
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function gotoLogin() {
+            window.location.href = "../login.php";
+        }
+	</script>
 </body>
+</html>
