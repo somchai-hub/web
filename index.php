@@ -73,7 +73,7 @@ if (isset($_SESSION['userid'])) {
             .head button {
                 margin: 10px 10px;
                 padding: 14px 18px;
-                margin-left: auto;
+                /*margin-left: auto;*/
                 border: none;
                 background-color: #005461;
                 border-radius: 5px;
@@ -214,11 +214,22 @@ if (isset($_SESSION['userid'])) {
         <div class="head">
             <img src="assets/image/logo/logo.png" width="50px" height="50px" id="logo">
             <span><h2>Local Travel</h2></span>
-            <span class="text-white me-3 d-none d-md-block">สวัสดี, <?php echo $user_data['username']; ?></span>
+            <?php if(isset($_SESSION['userid'])): ?>
+            <span class="text-black me-3 d-none d-md-block" style="margin-left: auto;">สวัสดี, <?php echo $user_data['username']; ?></span>
             <a href="#" data-bs-toggle="modal" data-bs-target="#profileModal" class="position-relative">
                 <img src="<?php echo $user_data['profile_image']; ?>" class="rounded-circle border border-2 border-white shadow-sm" style="width: 45px; height: 45px; object-fit: cover;">
             </a>
-            <button id="login" onclick="gotoLogin()">Login</button>
+            <?php else : ?>
+            <span class="text-black me-3 d-none d-md-block" style="margin-left: auto;">สวัสดี, Guest</span>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#profileModal" class="position-relative">
+                <img src="<?php echo $user_data['profile_image']; ?>" class="rounded-circle border border-2 border-white shadow-sm" style="width: 45px; height: 45px; object-fit: cover;">
+            </a>
+            <?php endif; ?>
+            <?php if(isset($_SESSION['userid'])): ?>
+            <button id="login" onclick="gotoLogin()" style="display: none;">Login</button>
+            <?php else : ?>
+            <button id="login" onclick="gotoLogin()" style="display: block;">Login</button>
+            <?php endif; ?>
         </div>
         <?php if(isset($_SESSION['userid'])): ?>
         <div class="modal fade" id="profileModal" tabindex="-1" aria-hidden="true">

@@ -9,7 +9,7 @@ if(isset($_POST["query"])) {
     
     // SQL ค้นหาจาก ชื่อสถานที่ (name) หรือ สถานที่ตั้ง (location)
     $query = "
-    SELECT * FROM attractions 
+    SELECT * FROM attractions
     WHERE name LIKE '%".$search."%'
     OR location LIKE '%".$search."%'
     ORDER BY id DESC

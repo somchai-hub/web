@@ -3,7 +3,7 @@ session_start();
 require_once '../includes/client.php';
 
 if (!isset($_GET['id']) || empty($_GET['id'])) {
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit();
 }
 
@@ -20,7 +20,7 @@ mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 
 if (mysqli_num_rows($result) == 0) {
-    echo "<center><h3>ไม่พบข้อมูลสถานที่ท่องเที่ยวนี้</h3><a href='index.php'>กลับหน้าหลัก</a></center>";
+    echo "<center><h3>ไม่พบข้อมูลสถานที่ท่องเที่ยวนี้</h3><a href='../index.php'>กลับหน้าหลัก</a></center>";
     exit();
 }
 
@@ -94,7 +94,7 @@ if (isset($_SESSION['userid'])) {
             .head button {
                 margin: 10px 10px;
                 padding: 14px 18px;
-                margin-left: auto;
+                /*margin-left: auto;*/
                 border: none;
                 background-color: #005461;
                 border-radius: 5px;
@@ -149,12 +149,16 @@ if (isset($_SESSION['userid'])) {
     <div class="head">
         <img src="../assets/image/logo/logo.png" width="50px" height="50px" id="logo">
         <span><h2>Local Travel</h2></span>
+        <span class="text-white me-3 d-none d-md-block" style="margin-left: auto;">สวัสดี, <?php echo $user_data['username']; ?></span>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#profileModal" class="position-relative">
+                <img src="<?php echo $user_data['profile_image']; ?>" class="rounded-circle border border-2 border-white shadow-sm" style="width: 45px; height: 45px; object-fit: cover;">
+            </a>
         <button id="login" onclick="gotoLogin()">Login</button>
     </div>
     <ul>
         <li><a href="index.php">Home</a></l>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="aboutus.php">About</a></li>
+        <li><a href="contact,php">Contact</a></li>
     </ul>
     <div class="container mb-5">
         <nav aria-label="breadcrumb" class="bread-l">
