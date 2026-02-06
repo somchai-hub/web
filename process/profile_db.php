@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'includes/client.php';
+require_once '../includes/client.php';
 
 if (isset($_POST['update_profile']) && isset($_SESSION['userid'])) {
     
@@ -61,12 +61,12 @@ if (isset($_POST['update_profile']) && isset($_SESSION['userid'])) {
     $_SESSION['success'] = "บันทึกข้อมูลเรียบร้อยแล้ว";
     //header("Location: profile.php");
     // ให้เด้งกลับไปหน้าที่กดมา (หน้าเดิม)
-    $redirect = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'index.php';
+    $redirect = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '../index.php';
     header("Location: " . $redirect);
     exit();
 
 } else {
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit();
 }
 ?>

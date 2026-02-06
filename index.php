@@ -45,170 +45,7 @@ if (isset($_SESSION['userid'])) {
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&family=Nunito:ital@0;1&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-                font-family: "Noto Sans Thai", sans-serif;
-                font-optical-sizing: auto;
-                font-weight: 400;
-                font-style: normal;
-                font-variation-settings: "wdth" 100;
-            }
-            body {
-                background-color: #BFC9D1;
-            }
-            .head {
-                display: flex;
-                align-items: center;
-                margin: 0px 5px;
-            }
-            .head h2 {
-                margin: 14px 10px;
-                font-family: "Nunito", sans-serif;
-  				font-optical-sizing: auto;
-  				font-weight: 400;
- 				font-style: normal;
-            }
-            .head button {
-                margin: 10px 10px;
-                padding: 14px 18px;
-                /*margin-left: auto;*/
-                border: none;
-                background-color: #005461;
-                border-radius: 5px;
-                color: white;
-            }
-            .head button:hover {
-                background-color: #018790;
-            }
-            ul {
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-                overflow: hidden;
-                background-color: #96A78D;
-                display: flex;
-            }
-            ul li {
-                float: left;
-                font-family: "Nunito", sans-serif;
-  				font-optical-sizing: auto;
-  				font-weight: 400;
- 				font-style: normal;
-            }
-            ul li a {
-                text-decoration: none;
-                color: white;
-                padding: 14px 16px;
-                display: block;
-            }
-            ul li a:hover {
-                background-color: #B6CEB4;
-            }
-            .hero-section {
-                width: 100%;
-                height: 400px;
-                /*background-color: #f4f4f4;*/
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-                background-image: url('assets/image/background/background2.jpg'); 
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                overflow: hidden;
-            }
-            .content-container h1 {
-                margin-bottom: 20px;
-                color: #efefef;
-            }
-            .search-box {
-                background: white;
-                padding: 10px;
-                border-radius: 50px;
-                box-shadow: 0 4px 10px rgba(0,0,0.1);
-                display: flex;
-                gap: 10px;
-                width: 100%;
-                max-width: 500px;
-            }
-            .search-box input {
-                border: none;
-                outline: none;
-                padding: 10px 15px;
-                flex-grow: 1;
-                font-size: 16px;
-                border-radius: 50px;
-            }
-            .search-box button {
-                background-color: #006666;
-                color: white;
-                border: none;
-                padding: 10px 25px;
-                border-radius: 50px;
-                cursor: pointer;
-                font-size: 16px;
-            }
-            .search-box button:hover {
-                background-color: #004d4d;
-            }
-            .search-container .row {
-                margin: 10px;
-            }
-            .content-place {
-                margin: 12px;
-                margin-top: 50px;
-            }
-            .content-place h2 {
-                font-size: 3em;
-            }
-            .content-place .box {
-                display: flex;
-                gap: 20px;
-                margin-top: 20px;
-                align-items: flex-start;
-            }
-            .content-place .box .desc {
-                display: flex;
-                flex-direction: column;
-            }
-            .content-place .box .dp {
-                color: #666;
-            }
-            .content-place .box img {
-                width: 500px;
-                height: 300px;
-                background-size: cover;
-                background-position: center;
-            }
-            @media screen and (max-width: 768px) {
-                .hero-section {
-                    height: 300px;
-                    padding: 0 20px;
-                }
-                .content-container h1 {
-                    font-size: 24px;
-                }
-                .search-box {
-                    flex-direction: column;
-                    border-radius: 15px;
-                    padding: 15px;
-                    width: 100%;
-                }
-                .search-box input {
-                    width: 100%;
-                    text-align: center;
-                    margin-bottom: 10px;
-                    padding: 12px;
-                }
-                .search-box button {
-                    width: 100%;
-                    padding: 12px;
-                }
-            }
-        </style>
+        <link rel="stylesheet" href="assets/css/main.css">
     </head>
     <body>
         <div class="head">
@@ -239,7 +76,7 @@ if (isset($_SESSION['userid'])) {
                         <h5 class="modal-title"><i class="fas fa-user-edit"></i> แก้ไขโปรไฟล์</h5>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                     </div>
-                    <form action="profile_db.php" method="POST" enctype="multipart/form-data">
+                    <form action="process/profile_db.php" method="POST" enctype="multipart/form-data">
                         <div class="modal-body">
                             <div class="text-center mb-4">
                                 <img src="<?php echo $user_data['profile_image']; ?>" id="previewImg" class="rounded-circle border shadow" style="width: 120px; height: 120px; object-fit: cover;">
@@ -270,7 +107,7 @@ if (isset($_SESSION['userid'])) {
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <a href="logout.php" class="btn btn-danger me-auto">ออกจากระบบ</a>
+                            <a href="process/logout.php" class="btn btn-danger me-auto">ออกจากระบบ</a>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ยกเลิก</button>
                             <button type="submit" name="update_profile" class="btn btn-primary">บันทึก</button>
                         </div>
@@ -294,9 +131,9 @@ if (isset($_SESSION['userid'])) {
         </script>
         <?php endif; ?>
         <ul>
-            <li><a href="index.php">Home</a></l>
-            <li><a href="about.php">About</a></li>
-            <li><a href="contact.php">Contact</a></li>
+            <li><a href="pages/index.php">Home</a></l>
+            <li><a href="pages/about.php">About</a></li>
+            <li><a href="pages/contact.php">Contact</a></li>
         </ul>
         <section class="hero-section">
             <div class="content-container">
@@ -311,7 +148,7 @@ if (isset($_SESSION['userid'])) {
                     //load_data();
                     function load_data(query) {
                         $.ajax({
-                            url: "search_db.php",
+                            url: "process/search_db.php",
                             method: "POST",
                             data: {query: query},
                             success: function(data){
@@ -335,34 +172,62 @@ if (isset($_SESSION['userid'])) {
             <hr class="my-4">
             <div class="row" id="search_result"></div>
         </div>
+        <h2>สถานที่ท่องเที่ยว ฝาง</h2>
         <div class="content-place">
-            <h2>สถานที่ท่องเที่ยว ฝาง</h2>
             <div class="box">
-                <img src="uploads/attractions/place1.jpg" class="detail-img">
+                <a href="#"><img src="uploads/attractions/place1.jpg"></a>
                 <div class="desc">
                     <h3>ดอยอ่างขาง</h3>
                     <p class="dp">ภูเขา</p>
                 </div>
             </div>
             <div class="box">
-                <img src="uploads/attractions/place2.jpg">
-                <div class="desc">
-                    <h3>อุทยานแห่งชาติดอยผ้าห่มปก</h3>
-                    <p class="dp">อุทยานแห่งชาติ</p>
-                </div>
-            </div>
-            <div class="box">
-                <img src="uploads/attractions/fang_hotspring.jpg">
+                <a href="AttractionDetail/attraction_detail.php?id=2"><img src="uploads/attractions/fang_hotspring.jpg"></a>
                 <div class="desc">
                     <h3>น้ำพุร้อนฝาง</h3>
                     <p class="dp">บ่อน้ำร้อนและน้ำพุร้อน</p>
                 </div>
             </div>
             <div class="box">
-                <img src="uploads/attractions/place3.jpg">
+                <a href="AttractionDetail/attraction_detail.php?id=1"><img src="uploads/attractions/angkhang.jpg"></a>
                 <div class="desc">
                     <h3>สถานีเกษตรหลวงอ่างขาง</h3>
                     <p class="dp">ฟาร์ม</p>
+                </div>
+            </div>
+            <div class="box">
+                <a href="AttractionDetail/attraction_detail.php?id=10"><img src="uploads/attractions/nor_lae_strawberry.jpg"></a>
+                <div class="desc">
+                    <h3>ไร่สตรอเบอร์รี่บ้านนอแล</h3>
+                    <p class="dp">ฟาร์ม</p>
+                </div>
+            </div>
+            <div class="box">
+                <a href="AttractionDetail/attraction_detail.php?id=13"><img src="uploads/attractions/mae_mao_dam.jpg"></a>
+                <div class="desc">
+                    <h3>เขื่อนแม่มาว</h3>
+                    <p class="dp"></p>
+                </div>
+            </div>
+            <div class="box">
+                <a href="AttractionDetail/attraction_detail.php?id=14"><img src="uploads/attractions/wat_si_bun_rueang.jpg"></a>
+                <div class="desc">
+                    <h3>วัดศรีบุญเรือง</h3>
+                    <p class="dp">วัด</p>
+                </div>
+            </div>
+            <div class="box">
+                <a href="AttractionDetail/attraction_detail.php?id=20"><img src="uploads/attractions/huay_bon_cave.jpg"></a>
+                <div class="desc">
+                    <h3>ถ้ำห้วยบอน</h3>
+                    <p class="dp">ถ้ำ</p>
+                </div>
+            </div>
+            <div class="box">
+                <a href="AttractionDetail/attraction_detail.php?id=12"><img src="uploads/attractions/doi_san_ju.jpg"></a>
+                <div class="desc">
+                    <h3>ดอยสันจุ๊</h3>
+                    <p class="dp">ภูเขา</p>
                 </div>
             </div>
         </div>

@@ -74,7 +74,7 @@
     <body>
         <div class="container">
             <div id="alertMessage" class="alert alert-danger d-none"></div>
-            <form action="regis_db.php" method="post" id="regisForm">
+            <form action="process/regis_db.php" method="post" id="regisForm">
                 <h1>Register</h1>
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" placeholder="Enter your username" required>
@@ -94,7 +94,7 @@
                     e.preventDefault();
                     $.ajax({
                         type: "POST",
-                        url: "regis_db.php",
+                        url: "process/regis_db.php",
                         data: $(this).serialize(),
                         dataType: "json",
                         success: function(response) {

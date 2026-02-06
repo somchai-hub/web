@@ -66,99 +66,35 @@ if (isset($_SESSION['userid'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $row['name']; ?> - Local Travel</title>
+    <link rel="stylesheet" href="../assets/css/attractionDetail.css">
+    <link rel="icon" href="../assets/image/logo/logo.png" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&family=Nunito:ital@0;1&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: "Noto Sans Thai", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: 400;
-            font-style: normal;
-            font-variation-settings: "wdth" 100;
-        }
-        .head {
-                display: flex;
-                align-items: center;
-                margin: 0px 5px;
-            }
-            .head h2 {
-                margin: 14px 10px;
-                font-family: "Nunito", sans-serif;
-  				font-optical-sizing: auto;
-  				font-weight: 400;
- 				font-style: normal;
-            }
-            .head button {
-                margin: 10px 10px;
-                padding: 14px 18px;
-                /*margin-left: auto;*/
-                border: none;
-                background-color: #005461;
-                border-radius: 5px;
-                color: white;
-            }
-            .head button:hover {
-                background-color: #018790;
-            }
-            ul {
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-                overflow: hidden;
-                background-color: #96A78D;
-                display: flex;
-            }
-            ul li {
-                float: left;
-                font-family: "Nunito", sans-serif;
-  				font-optical-sizing: auto;
-  				font-weight: 400;
- 				font-style: normal;
-            }
-            ul li a {
-                text-decoration: none;
-                color: white;
-                padding: 14px 16px;
-                display: block;
-            }
-            ul li a:hover {
-                background-color: #B6CEB4;
-            }
-            .bread-l {
-                margin: 8px;
-            }
-        .detail-img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .info-card {
-            background: #fff;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-    </style>
 </head>
 <body class="bg-light">
     <div class="head">
         <img src="../assets/image/logo/logo.png" width="50px" height="50px" id="logo">
         <span><h2>Local Travel</h2></span>
-        <span class="text-white me-3 d-none d-md-block" style="margin-left: auto;">สวัสดี, <?php echo $user_data['username']; ?></span>
-            <a href="#" data-bs-toggle="modal" data-bs-target="#profileModal" class="position-relative">
-                <img src="<?php echo $user_data['profile_image']; ?>" class="rounded-circle border border-2 border-white shadow-sm" style="width: 45px; height: 45px; object-fit: cover;">
-            </a>
+        <?php if(isset($_SESSION['userid'])): ?>
+        <span class="text-black me-3 d-none d-md-block" style="margin-left: auto;">สวัสดี, <?php echo $user_data['username']; ?></span>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#profileModal" class="position-relative">
+            <img src="<?php echo $user_data['profile_image']; ?>" class="rounded-circle border border-2 border-white shadow-sm" style="width: 45px; height: 45px; object-fit: cover;">
+        </a>
+        <?php elseif(!isset($_SESSION['userid'])): ?>
+        <span class="text-black me-3 d-none d-md-block" style="margin-left: auto;">สวัสดี, Guest</span>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#profileModal" class="position-relative">
+            <img src="<?php echo $user_data['profile_image']; ?>" class="rounded-circle border border-2 border-white shadow-sm" style="width: 45px; height: 45px; object-fit: cover;">
+        </a>
+        <?php endif; ?>
         <button id="login" onclick="gotoLogin()">Login</button>
     </div>
     <ul>
         <li><a href="index.php">Home</a></l>
         <li><a href="aboutus.php">About</a></li>
-        <li><a href="contact,php">Contact</a></li>
+        <li><a href="contact.php">Contact</a></li>
     </ul>
     <div class="container mb-5">
         <nav aria-label="breadcrumb" class="bread-l">

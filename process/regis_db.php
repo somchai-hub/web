@@ -1,5 +1,5 @@
 <?php
-include("includes/client.php");
+include("../includes/client.php");
 header('Content-Type: application/json');
 $response = array();
 

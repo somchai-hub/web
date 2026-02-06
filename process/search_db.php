@@ -1,5 +1,5 @@
 <?php
-require_once 'includes/client.php';
+require_once '../includes/client.php';
 
 $output = '';
 
@@ -26,7 +26,7 @@ if(mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_array($result)) {
         
         // เช็ครูปภาพ (ถ้าไม่มีรูปให้ใช้รูป Default)
-        $img_path = 'uploads/attractions/' . $row['cover_image'];
+        $img_path = '../uploads/attractions/' . $row['cover_image'];
         if(empty($row['cover_image']) || !file_exists($img_path)){
             $img_path = 'https://via.placeholder.com/300x200?text=No+Image'; // รูปแก้ขัด
         }
@@ -42,7 +42,7 @@ if(mysqli_num_rows($result) > 0) {
                     <p class="card-text">'.mb_substr($row['description'], 0, 80, 'UTF-8').'...</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <span class="badge bg-success">'.$row['price_range'].'</span>
-                        <a href="AttractionDetail/attraction_detail.php?id='.$row['id'].'" class="btn btn-sm btn-primary">ดูรายละเอียด</a>
+                        <a href="../AttractionDetail/attraction_detail.php?id='.$row['id'].'" class="btn btn-sm btn-primary">ดูรายละเอียด</a>
                     </div>
                 </div>
             </div>

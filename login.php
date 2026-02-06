@@ -92,7 +92,7 @@
 	<body>
 		<div class="container">
 			<div id="alertMessage" class="alert alert-danger d-none"></div>
-			<form id="loginForm" action="login_db.php" method="post">
+			<form id="loginForm" action="process/login_db.php" method="post">
 			    <h1>Login</h1>
 				<img src="assets/image/profile/guest.png" class="guest-pf">
 			    <label for="username">Username:</label>
@@ -115,7 +115,7 @@
                 e.preventDefault();
                 $.ajax({
                     type: "POST",
-                    url: "login_db.php",
+                    url: "process/login_db.php",
                     data: $(this).serialize(),
                     dataType: "json",
                     success: function(response) {

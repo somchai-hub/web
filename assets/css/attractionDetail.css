@@ -1,0 +1,82 @@
+body {
+    font-family: "Noto Sans Thai", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "wdth"100;
+}
+
+.head {
+    display: flex;
+    align-items: center;
+    margin: 0px 5px;
+}
+
+.head h2 {
+    margin: 14px 10px;
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.head button {
+    margin: 10px 10px;
+    padding: 14px 18px;
+    /*margin-left: auto;*/
+    border: none;
+    background-color: #005461;
+    border-radius: 5px;
+    color: white;
+}
+
+.head button:hover {
+    background-color: #018790;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #96A78D;
+    display: flex;
+}
+
+ul li {
+    float: left;
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 14px 16px;
+    display: block;
+}
+
+ul li a:hover {
+    background-color: #B6CEB4;
+}
+
+.bread-l {
+    margin: 8px;
+}
+
+.detail-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.info-card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
