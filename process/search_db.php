@@ -107,7 +107,12 @@ if(mysqli_num_rows($result) > 0) {
     if ($isInFang) {
         $output = "<b style='color:green;'>✅ สถานที่นี้อยู่ในเขตอำเภอฝาง</b>";
     } else {
-        $output = "<b style='color:red;'>❌ สถานที่นี้ไม่อยู่ในเขตอำเภอฝาง</b>";
+        $output = '
+        <div class="col-12 text-center text-muted mt-5">
+            <h4>อุ๊ป สถานที่นี้ไม่ได้อยู่ในอำเภอฝาง :(</h4>
+            <p>ลองใช้คำค้นหาอื่น หรือตรวจสอบตัวสะกด</p>
+        </div>
+        ';
     }
 }
 echo $output;
