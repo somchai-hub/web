@@ -14,9 +14,6 @@ if(isset($_POST["query"])) {
     OR location LIKE '%".$search."%'
     ORDER BY id DESC
     ";
-} else {
-    // ถ้าไม่มีคำค้นหา ให้ดึงมาแสดงทั้งหมด
-    $query = "SELECT * FROM attractions ORDER BY id DESC";
 }
 
 $result = mysqli_query($conn, $query);
@@ -25,13 +22,11 @@ $result = mysqli_query($conn, $query);
 if(mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_array($result)) {
         
-        // เช็ครูปภาพ (ถ้าไม่มีรูปให้ใช้รูป Default)
         $img_path = '../uploads/attractions/' . $row['cover_image'];
         if(empty($row['cover_image']) || !file_exists($img_path)){
             $img_path = 'https://via.placeholder.com/300x200?text=No+Image'; // รูปแก้ขัด
         }
 
-        // สร้าง HTML Card สำหรับแต่ละสถานที่
         $output .= '
         <div class="col-md-4 mb-4">
             <div class="card h-100 shadow-sm">
@@ -50,13 +45,70 @@ if(mysqli_num_rows($result) > 0) {
         ';
     }
 } else {
-    // กรณีไม่พบข้อมูล
-    $output = '
-    <div class="col-12 text-center text-muted mt-5">
-        <h4>ไม่พบสถานที่ที่คุณค้นหา :(</h4>
-        <p>ลองใช้คำค้นหาอื่น หรือตรวจสอบตัวสะกด</p>
-    </div>
-    ';
+/**
+ * ฟังก์ชันตรวจสอบว่าจุด (Lat, Lon) อยู่ใน Polygon หรือไม่
+ */
+    function isPointInPolygon($point, $polygon) {
+        $x = $point[0]; // Longitude
+        $y = $point[1]; // Latitude
+        $inside = false;
+
+    // ลูปเช็กตามจุดพิกัดใน GeoJSON
+        for ($i = 0, $j = count($polygon) - 1; $i < count($polygon); $j = $i++) {
+            $xi = $polygon[$i][0]; $yi = $polygon[$i][1];
+            $xj = $polygon[$j][0]; $yj = $polygon[$j][1];
+
+            $intersect = (($yi > $y) != ($yj > $y))
+            && ($x < ($xj - $xi) * ($y - $yi) / ($yj - $yi) + $xi);
+            if ($intersect) $inside = !$inside;
+        }
+        return $inside;
+    }
+
+// 1. รับค่าค้นหาจากผู้ใช้
+    $search_query = $_GET['search'] ?? '';
+    if (!$search_query) {
+        $output = '
+        <div class="col-12 text-center text-muted mt-5">
+            <h4>ไม่พบสถานที่ที่คุณค้นหา :(</h4>
+            <p>ลองใช้คำค้นหาอื่น หรือตรวจสอบตัวสะกด</p>
+        </div>
+        ';
+    }
+
+// 2. แปลงชื่อสถานที่ให้เป็นพิกัด (Geocoding)
+    $url = "https://nominatim.openstreetmap.org/search?format=json&q=" . urlencode($search_query . " เชียงใหม่");
+    $opts = [
+        "http" => ["header" => "User-Agent: MyPHPScript/1.0\r\n"]
+    ];
+    $context = stream_context_create($opts);
+    $response = file_get_contents($url, false, $context);
+    $geo_results = json_decode($response, true);
+
+    if (empty($geo_results)) {
+        $output = '
+        <div class="col-12 text-center text-muted mt-5">
+            <h4>ไม่พบสถานที่ที่คุณค้นหา :(</h4>
+            <p>ลองใช้คำค้นหาอื่น หรือตรวจสอบตัวสะกด</p>
+        </div>
+        ';
+    }
+
+    $lat = $geo_results[0]['lat'];
+    $lon = $geo_results[0]['lon'];
+
+    $geo_data = json_decode(file_get_contents('../includes/fang.json'), true);
+    $fang_polygon = $geo_data['features'][0]['geometry']['coordinates'][0]; 
+    $isInFang = isPointInPolygon([$lon, $lat], $fang_polygon);
+
+// 5. แสดงผล
+//echo "<h3>ผลการตรวจสอบ: $search_query</h3>";
+//echo "พิกัดที่พบ: $lat, $lon <br>";
+    if ($isInFang) {
+        $output = "<b style='color:green;'>✅ สถานที่นี้อยู่ในเขตอำเภอฝาง</b>";
+    } else {
+        $output = "<b style='color:red;'>❌ สถานที่นี้ไม่อยู่ในเขตอำเภอฝาง</b>";
+    }
 }
 echo $output;
 ?>

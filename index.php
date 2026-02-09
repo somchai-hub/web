@@ -45,6 +45,7 @@ if (isset($_SESSION['userid'])) {
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&family=Nunito:ital@0;1&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
         <link rel="stylesheet" href="assets/css/main.css">
     </head>
     <body>
@@ -140,7 +141,7 @@ if (isset($_SESSION['userid'])) {
                 <h1>ค้นหาที่เที่ยวในฝันของคุณ</h1>
                 <div class="search-box">
                     <input type="text" name="search" id="search_text" placeholder="คุณอยากไปเที่ยวที่ไหน?">
-                    <button>ค้นหา</button>
+                    <button id="s-btn">ค้นหา</button>
                 </div>
 	        </div>
             <script>
@@ -235,7 +236,7 @@ if (isset($_SESSION['userid'])) {
             function gotoLogin() {
                 window.location.href = "login.php";
             }
-	</script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+	    </script>
+	    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
