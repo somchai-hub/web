@@ -141,7 +141,7 @@ if (isset($_SESSION['userid'])) {
                 <h1>ค้นหาที่เที่ยวในฝันของคุณ</h1>
                 <div class="search-box">
                     <input type="text" name="search" id="search_text" placeholder="คุณอยากไปเที่ยวที่ไหน?">
-                    <button id="s-btn">ค้นหา</button>
+                    <button type="submit" id="s-btn" name="btn-search">ค้นหา</button>
                 </div>
 	        </div>
             <script>
@@ -157,8 +157,8 @@ if (isset($_SESSION['userid'])) {
                             }
                         });
                     }
-                    $('#search_text').keyup(function(){
-                        var search = $(this).val();
+                    $('#s-btn').click(function(){
+                        var search = $("#search_text").val();
                         if(search != '') {
                             load_data(search);
                         } else {

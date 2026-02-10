@@ -3,16 +3,14 @@ require_once '../includes/client.php';
 
 $output = '';
 
-// เช็คว่ามีการส่งคำค้นหามาไหม
-if(isset($_POST["query"])) {
+$search = isset($_POST['query']) ? trim($_POST['query']) : '';
+if(!empty($search)) {
     $search = mysqli_real_escape_string($conn, $_POST["query"]);
-    
-    // SQL ค้นหาจาก ชื่อสถานที่ (name) หรือ สถานที่ตั้ง (location)
     $query = "
-    SELECT * FROM attractions
-    WHERE name LIKE '%".$search."%'
-    OR location LIKE '%".$search."%'
-    ORDER BY id DESC
+        SELECT * FROM attractions
+        WHERE name LIKE '%".$search."%'
+        OR location LIKE '%".$search."%'
+        ORDER BY id DESC
     ";
 }
 
@@ -22,8 +20,9 @@ $result = mysqli_query($conn, $query);
 if(mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_array($result)) {
         
-        $img_path = '../uploads/attractions/' . $row['cover_image'];
-        if(empty($row['cover_image']) || !file_exists($img_path)){
+        $img_path = 'uploads/attractions/' . $row['cover_image'];
+        $img_check = '../uploads/attractions/' . $row['cover_image'];
+        if(empty($row['cover_image']) || !file_exists($img_check)){
             $img_path = 'https://via.placeholder.com/300x200?text=No+Image'; // รูปแก้ขัด
         }
 
@@ -45,15 +44,11 @@ if(mysqli_num_rows($result) > 0) {
         ';
     }
 } else {
-/**
- * ฟังก์ชันตรวจสอบว่าจุด (Lat, Lon) อยู่ใน Polygon หรือไม่
- */
     function isPointInPolygon($point, $polygon) {
         $x = $point[0]; // Longitude
         $y = $point[1]; // Latitude
         $inside = false;
 
-    // ลูปเช็กตามจุดพิกัดใน GeoJSON
         for ($i = 0, $j = count($polygon) - 1; $i < count($polygon); $j = $i++) {
             $xi = $polygon[$i][0]; $yi = $polygon[$i][1];
             $xj = $polygon[$j][0]; $yj = $polygon[$j][1];
@@ -98,18 +93,20 @@ if(mysqli_num_rows($result) > 0) {
     $lon = $geo_results[0]['lon'];
 
     $geo_data = json_decode(file_get_contents('../includes/fang.json'), true);
-    $fang_polygon = $geo_data['features'][0]['geometry']['coordinates'][0]; 
+    $fang_polygon = $geo_data['features'][0]['geometry']['coordinates'][0];
     $isInFang = isPointInPolygon([$lon, $lat], $fang_polygon);
+
+    $geo_data2 = json_decode(file_get_contents('../includes/mae-ai.json'), true);
+    $maeai_polygon = $geo_data2['features'][0]['geometry']['coordinates'][0];
+    $isInMaeAi = isPointInPolygon([$lon, $lat], $maeai_polygon);
 
 // 5. แสดงผล
 //echo "<h3>ผลการตรวจสอบ: $search_query</h3>";
 //echo "พิกัดที่พบ: $lat, $lon <br>";
-    if ($isInFang) {
-        $output = "<b style='color:green;'>✅ สถานที่นี้อยู่ในเขตอำเภอฝาง</b>";
-    } else {
+    if (!$isInFang && !$isInMaeAi) {
         $output = '
         <div class="col-12 text-center text-muted mt-5">
-            <h4>อุ๊ป สถานที่นี้ไม่ได้อยู่ในอำเภอฝาง :(</h4>
+            <h4>อุ๊ป สถานที่นี้ไม่ได้อยู่ในเขตอำเภอฝางหรือแม่อาย :(</h4>
             <p>ลองใช้คำค้นหาอื่น หรือตรวจสอบตัวสะกด</p>
         </div>
         ';

@@ -7,7 +7,7 @@ $description = "";
 $location = "";
 $phone_number = "";
 $map_link = "";
-$price = "";
+$price_range = "";
 $cover_image = "";
 $category_id = "";
 $is_edit = false;
@@ -25,7 +25,7 @@ if (isset($_GET['id'])) {
     $location = $row['location'];
     $phone_number = $row['phone_number'];
     $map_link = $row['map_link'];
-    $price = $row['price_range'];
+    $price_range = $row['price_range'];
     $cover_image = $row['cover_image'];
     $category_id = $row['category_id'];
 }
@@ -37,17 +37,18 @@ if (isset($_POST['submit'])) {
     $location = $_POST['location'];
     $phone_number = $_POST['phone_number'];
     $map_link = $_POST['map_link'];
-    $price = $_POST['price_range'];
+    $price_range = $_POST['price_range'];
     $cover_image = $_POST['cover_image'];
     $category_id = $_POST['category_id'];
 
     if ($is_edit) {
         // Update ข้อมูลเดิม
         $id = $_POST['id'];
-        $sql = "UPDATE attractions SET name='$name', description='$description', location='$location', phone_number='$phone_number', map_link='$map_link', price='$price', cover_image='$cover_image', category_id='$category_id' WHERE id=$id";
+        $cat_id = !empty($category_id) ? $category_id : "NULL";
+        $sql = "UPDATE attractions SET name='$name', description='$description', location='$location', phone_number='$phone_number', map_link='$map_link', price_range='$price_range', cover_image='$cover_image', category_id='$cat_id' WHERE id=$id";
     } else {
         // Insert ข้อมูลใหม่
-        $sql = "INSERT INTO attractions (name, description, location, phone_number, map_link, price, cover_image, category_id) VALUES ('$name', '$description', '$location', '$phone_number', '$map_link', '$price', '$cover_image', '$category_id')";
+        $sql = "INSERT INTO attractions (name, description, location, phone_number, map_link, price_range, cover_image, category_id) VALUES ('$name', '$description', '$location', '$phone_number', '$map_link', '$price_range', '$cover_image', '$category_id')";
     }
 
     if ($conn->query($sql) === TRUE) {
@@ -97,27 +98,27 @@ if (isset($_POST['submit'])) {
                 </div>
                 <div class="mb-3">
                     <label>ที่อยู่</label>
-                    <textarea name="description" class="form-control" rows="3"><?php echo $location; ?></textarea>
+                    <textarea name="location" class="form-control" rows="3"><?php echo $location; ?></textarea>
                 </div>
                 <div class="mb-3">
                     <label>เบอร์โทร</label>
-                    <textarea name="description" class="form-control" rows="3"><?php echo $phone_number; ?></textarea>
+                    <textarea name="phone_number" class="form-control" rows="3"><?php echo $phone_number; ?></textarea>
                 </div>
                 <div class="mb-3">
                     <label>ลิงค์แมพ</label>
-                    <textarea name="description" class="form-control" rows="3"><?php echo $map_link; ?></textarea>
+                    <textarea name="map_link" class="form-control" rows="3"><?php echo $map_link; ?></textarea>
                 </div>
                 <div class="mb-3">
                     <label>ราคา</label>
-                    <input type="number" name="price" class="form-control" value="<?php echo $price; ?>" step="0.01" required>
+                    <textarea type="text" name="price_range" class="form-control" row="3"><?php echo $price_range; ?></textarea>
                 </div>
                 <div class="mb-3">
                     <label>รูปภาพ</label>
-                    <textarea name="description" class="form-control" rows="3"><?php echo $cover_image; ?></textarea>
+                    <textarea name="cover_image" class="form-control" rows="3"><?php echo $cover_image; ?></textarea>
                 </div>
                 <div class="mb-3">
                     <label>หมวดหมู่</label>
-                    <textarea name="description" class="form-control" rows="3"><?php echo $category_id; ?></textarea>
+                    <textarea name="category_id" class="form-control" rows="3"><?php echo $category_id; ?></textarea>
                 </div>
                 <button type="submit" name="submit" class="btn btn-primary">บันทึกข้อมูล</button>
                 <a href="index.php" class="btn btn-secondary">ยกเลิก</a>
