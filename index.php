@@ -133,7 +133,7 @@ if (isset($_SESSION['userid'])) {
         <?php endif; ?>
         <ul>
             <li><a href="pages/index.php">Home</a></l>
-            <li><a href="pages/about.php">About</a></li>
+            <li><a href="pages/aboutus.php">About</a></li>
             <li><a href="pages/contact.php">Contact</a></li>
         </ul>
         <section class="hero-section">
