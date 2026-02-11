@@ -71,12 +71,6 @@
 		        margin: 0;
 		        padding-left: 0;
 		    }
-		    .bottom-remem {
-		        display: flex;
-		        align-items: center;
-		        gap: 4px;
-		        cursor: pointer;
-		    }
 	        @media (min-width: 668px) {
                 .container {
                     width: 300px;
@@ -101,10 +95,6 @@
 				<input type="password" id="password" name="password" placeholder="Enter your password" required>
 				<button type="submit" name="login">Login</button>
 				<div class="bottom">
-				    <div class="bottom-remem">
-				        <input type="checkbox" name="remember">
-				        <span> Remember me</span>
-				    </div>
 			        <a href="register.php">Create an account</a>
 			    </div>
 			</form>

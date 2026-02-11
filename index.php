@@ -36,9 +36,7 @@ if (isset($_SESSION['userid'])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Local Travel - Home Page</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <title>หน้าแรก - Local Travel</title>
 		<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -132,13 +130,13 @@ if (isset($_SESSION['userid'])) {
         </script>
         <?php endif; ?>
         <ul>
-            <li><a href="pages/index.php">Home</a></l>
-            <li><a href="pages/aboutus.php">About</a></li>
-            <li><a href="pages/contact.php">Contact</a></li>
+            <li><a href="index.php">หน้าแรก</a></li>
+            <li><a href="pages/aboutus.php">เกี่ยวกับเรา</a></li>
+            <li><a href="pages/contact.php">ติดต่อเรา</a></li>
         </ul>
         <section class="hero-section">
             <div class="content-container">
-                <h1>ค้นหาที่เที่ยวในฝันของคุณ</h1>
+                <h2>ค้นหาที่เที่ยวในฝันของคุณ</h2>
                 <div class="search-box">
                     <input type="text" name="search" id="search_text" placeholder="คุณอยากไปเที่ยวที่ไหน?">
                     <button type="submit" id="s-btn" name="btn-search">ค้นหา</button>
@@ -229,6 +227,79 @@ if (isset($_SESSION['userid'])) {
                 <div class="desc">
                     <h3>ดอยสันจุ๊</h3>
                     <p class="dp">ภูเขา</p>
+                </div>
+            </div>
+            <div class="box">
+                <a href="AttractionDetail/attraction_detail.php?id=9"><img src="uploads/attractions/tea_plantation_2000.jpg"></a>
+                <div class="desc">
+                    <h3>ไร่ชา 2000</h3>
+                    <p class="dp">ฟาร์ม</p>
+                </div>
+            </div>
+        </div>
+        <h2>สถานที่ท่องเที่ยว แม่อาย</h2>
+        <div class="content-place">
+            <div class="box">
+                <a href="#"><img src="uploads/attractions/place1.jpg"></a>
+                <div class="desc">
+                    <h3>ดอยอ่างขาง</h3>
+                    <p class="dp">ภูเขา</p>
+                </div>
+            </div>
+            <div class="box">
+                <a href="AttractionDetail/attraction_detail.php?id=2"><img src="uploads/attractions/fang_hotspring.jpg"></a>
+                <div class="desc">
+                    <h3>น้ำพุร้อนฝาง</h3>
+                    <p class="dp">บ่อน้ำร้อนและน้ำพุร้อน</p>
+                </div>
+            </div>
+            <div class="box">
+                <a href="AttractionDetail/attraction_detail.php?id=1"><img src="uploads/attractions/angkhang.jpg"></a>
+                <div class="desc">
+                    <h3>สถานีเกษตรหลวงอ่างขาง</h3>
+                    <p class="dp">ฟาร์ม</p>
+                </div>
+            </div>
+            <div class="box">
+                <a href="AttractionDetail/attraction_detail.php?id=10"><img src="uploads/attractions/nor_lae_strawberry.jpg"></a>
+                <div class="desc">
+                    <h3>ไร่สตรอเบอร์รี่บ้านนอแล</h3>
+                    <p class="dp">ฟาร์ม</p>
+                </div>
+            </div>
+            <div class="box">
+                <a href="AttractionDetail/attraction_detail.php?id=13"><img src="uploads/attractions/mae_mao_dam.jpg"></a>
+                <div class="desc">
+                    <h3>เขื่อนแม่มาว</h3>
+                    <p class="dp"></p>
+                </div>
+            </div>
+            <div class="box">
+                <a href="AttractionDetail/attraction_detail.php?id=14"><img src="uploads/attractions/wat_si_bun_rueang.jpg"></a>
+                <div class="desc">
+                    <h3>วัดศรีบุญเรือง</h3>
+                    <p class="dp">วัด</p>
+                </div>
+            </div>
+            <div class="box">
+                <a href="AttractionDetail/attraction_detail.php?id=20"><img src="uploads/attractions/huay_bon_cave.jpg"></a>
+                <div class="desc">
+                    <h3>ถ้ำห้วยบอน</h3>
+                    <p class="dp">ถ้ำ</p>
+                </div>
+            </div>
+            <div class="box">
+                <a href="AttractionDetail/attraction_detail.php?id=12"><img src="uploads/attractions/doi_san_ju.jpg"></a>
+                <div class="desc">
+                    <h3>ดอยสันจุ๊</h3>
+                    <p class="dp">ภูเขา</p>
+                </div>
+            </div>
+            <div class="box">
+                <a href="AttractionDetail/attraction_detail.php?id=9"><img src="uploads/attractions/tea_plantation_2000.jpg"></a>
+                <div class="desc">
+                    <h3>ไร่ชา 2000</h3>
+                    <p class="dp">ฟาร์ม</p>
                 </div>
             </div>
         </div>

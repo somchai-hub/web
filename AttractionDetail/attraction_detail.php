@@ -72,6 +72,7 @@ if (isset($_SESSION['userid'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../assets/css/attractionDetail.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&family=Nunito:ital@0;1&display=swap" rel="stylesheet">
 </head>
 <body class="bg-light">
@@ -92,9 +93,9 @@ if (isset($_SESSION['userid'])) {
         <button id="login" onclick="gotoLogin()">Login</button>
     </div>
     <ul>
-        <li><a href="index.php">Home</a></l>
-        <li><a href="aboutus.php">About</a></li>
-        <li><a href="contact.php">Contact</a></li>
+        <li><a href="../index.php">หน้าแรก</a></li>
+        <li><a href="../pages/aboutus.php">เกี่ยวกับเรา</a></li>
+        <li><a href="../pages/contact.php">ติดต่อเรา</a></li>
     </ul>
     <div class="container mb-5">
         <nav aria-label="breadcrumb" class="bread-l">
