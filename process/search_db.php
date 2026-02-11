@@ -30,13 +30,13 @@ if(mysqli_num_rows($result) > 0) {
         <div class="col-md-4 mb-4">
             <div class="card h-100 shadow-sm">
                 <img src="'.$img_path.'" class="card-img-top" alt="'.$row['name'].'" style="height: 200px; object-fit: cover;">
-                <div class="card-body">
-                    <h5 class="card-title">'.$row['name'].'</h5>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">'.$row['name'].'</h5>|
                     <p class="card-text text-muted"><small>📍 '.$row['location'].'</small></p>
                     <p class="card-text">'.mb_substr($row['description'], 0, 80, 'UTF-8').'...</p>
-                    <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex justify-content-between align-items-center mt-auto">
                         <span class="badge bg-success">'.$row['price_range'].'</span>
-                        <a href="../AttractionDetail/attraction_detail.php?id='.$row['id'].'" class="btn btn-sm btn-primary">ดูรายละเอียด</a>
+                        <a href="AttractionDetail/attraction_detail.php?id='.$row['id'].'" class="btn btn-sm btn-primary">ดูรายละเอียด</a>
                     </div>
                 </div>
             </div>
