@@ -53,12 +53,12 @@ if (isset($_SESSION['userid'])) {
             <?php if(isset($_SESSION['userid'])): ?>
             <span class="text-black me-3 d-none d-md-block" style="margin-left: auto;">สวัสดี, <?php echo $user_data['username']; ?></span>
             <a href="#" data-bs-toggle="modal" data-bs-target="#profileModal" class="position-relative">
-                <img src="<?php echo $user_data['profile_image']; ?>" class="rounded-circle border border-2 border-white shadow-sm" style="width: 45px; height: 45px; object-fit: cover;">
+                <img src="<?php echo $user_data['profile_image']; ?>" class="rounded-circle border border-2 border-white shadow-sm" style="width: 45px; height: 45px; object-fit: cover; margin-left: auto;">
             </a>
             <?php else : ?>
             <span class="text-black me-3 d-none d-md-block" style="margin-left: auto;">สวัสดี, Guest</span>
             <a href="#" data-bs-toggle="modal" data-bs-target="#profileModal" class="position-relative">
-                <img src="<?php echo $user_data['profile_image']; ?>" class="rounded-circle border border-2 border-white shadow-sm" style="width: 45px; height: 45px; object-fit: cover;">
+                <img src="<?php echo $user_data['profile_image']; ?>" class="rounded-circle border border-2 border-white shadow-sm" style="width: 45px; height: 45px; object-fit: cover; margin-left: auto;">
             </a>
             <?php endif; ?>
             <?php if(isset($_SESSION['userid'])): ?>

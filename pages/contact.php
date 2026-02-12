@@ -251,5 +251,10 @@ if (isset($_SESSION['userid'])) {
     <footer class="bg-gray-800 text-white py-8 text-center mt-8">
         <p>&copy; 2026 Local Travel. All rights reserved.</p>
     </footer>
+    <script>
+        function gotoLogin() {
+            window.location.href = "../login.php";
+        }
+	</script>
 </body>
 </html>
