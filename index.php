@@ -174,9 +174,9 @@ if (isset($_SESSION['userid'])) {
         <h2>สถานที่ท่องเที่ยว ฝาง</h2>
         <div class="content-place">
             <div class="box">
-                <a href="#"><img src="uploads/attractions/place1.jpg"></a>
+                <a href="AttractionDetail/attraction_detail.php?id=11"><img src="uploads/attractions/ban_khop_dong.jpg"></a>
                 <div class="desc">
-                    <h3>ดอยอ่างขาง</h3>
+                    <h3>บ้านขอบด้ง</h3>
                     <p class="dp">ภูเขา</p>
                 </div>
             </div>
@@ -240,66 +240,66 @@ if (isset($_SESSION['userid'])) {
         <h2>สถานที่ท่องเที่ยว แม่อาย</h2>
         <div class="content-place">
             <div class="box">
-                <a href="#"><img src="uploads/attractions/place1.jpg"></a>
+                <a href="AttractionDetail/attraction_detail.php?id=3"><img src="uploads/attractions/wat_thaton.jpg"></a>
                 <div class="desc">
-                    <h3>ดอยอ่างขาง</h3>
-                    <p class="dp">ภูเขา</p>
-                </div>
-            </div>
-            <div class="box">
-                <a href="AttractionDetail/attraction_detail.php?id=2"><img src="uploads/attractions/fang_hotspring.jpg"></a>
-                <div class="desc">
-                    <h3>น้ำพุร้อนฝาง</h3>
-                    <p class="dp">บ่อน้ำร้อนและน้ำพุร้อน</p>
-                </div>
-            </div>
-            <div class="box">
-                <a href="AttractionDetail/attraction_detail.php?id=1"><img src="uploads/attractions/angkhang.jpg"></a>
-                <div class="desc">
-                    <h3>สถานีเกษตรหลวงอ่างขาง</h3>
-                    <p class="dp">ฟาร์ม</p>
-                </div>
-            </div>
-            <div class="box">
-                <a href="AttractionDetail/attraction_detail.php?id=10"><img src="uploads/attractions/nor_lae_strawberry.jpg"></a>
-                <div class="desc">
-                    <h3>ไร่สตรอเบอร์รี่บ้านนอแล</h3>
-                    <p class="dp">ฟาร์ม</p>
-                </div>
-            </div>
-            <div class="box">
-                <a href="AttractionDetail/attraction_detail.php?id=13"><img src="uploads/attractions/mae_mao_dam.jpg"></a>
-                <div class="desc">
-                    <h3>เขื่อนแม่มาว</h3>
-                    <p class="dp"></p>
-                </div>
-            </div>
-            <div class="box">
-                <a href="AttractionDetail/attraction_detail.php?id=14"><img src="uploads/attractions/wat_si_bun_rueang.jpg"></a>
-                <div class="desc">
-                    <h3>วัดศรีบุญเรือง</h3>
+                    <h3>วัดท่าตอน</h3>
                     <p class="dp">วัด</p>
                 </div>
             </div>
             <div class="box">
-                <a href="AttractionDetail/attraction_detail.php?id=20"><img src="uploads/attractions/huay_bon_cave.jpg"></a>
+                <a href="AttractionDetail/attraction_detail.php?id=4"><img src="uploads/attractions/thanathon_orchard.jpg"></a>
                 <div class="desc">
-                    <h3>ถ้ำห้วยบอน</h3>
-                    <p class="dp">ถ้ำ</p>
+                    <h3>สวนส้มธนาธร (สวน 8)</h3>
+                    <p class="dp">ฟาร์ม</p>
                 </div>
             </div>
             <div class="box">
-                <a href="AttractionDetail/attraction_detail.php?id=12"><img src="uploads/attractions/doi_san_ju.jpg"></a>
+                <a href="AttractionDetail/attraction_detail.php?id=5"><img src="uploads/attractions/doi_pu_muen.jpg"></a>
                 <div class="desc">
-                    <h3>ดอยสันจุ๊</h3>
+                    <h3>ดอยปู่หมื่น</h3>
                     <p class="dp">ภูเขา</p>
                 </div>
             </div>
             <div class="box">
-                <a href="AttractionDetail/attraction_detail.php?id=9"><img src="uploads/attractions/tea_plantation_2000.jpg"></a>
+                <a href="AttractionDetail/attraction_detail.php?id=15"><img src="uploads/attractions/roi-jai-rak.jpg"></a>
                 <div class="desc">
-                    <h3>ไร่ชา 2000</h3>
+                    <h3>สวนร้อยใจรักษ์</h3>
                     <p class="dp">ฟาร์ม</p>
+                </div>
+            </div>
+            <div class="box">
+                <a href="AttractionDetail/attraction_detail.php?id=16"><img src="uploads/attractions/wat_mae_ai_luang.jpg"></a>
+                <div class="desc">
+                    <h3>วัดแม่อายหลวง</h3>
+                    <p class="dp">วัด</p>
+                </div>
+            </div>
+            <div class="box">
+                <a href="AttractionDetail/attraction_detail.php?id=17"><img src="uploads/attractions/kok_river_boat.jpg"></a>
+                <div class="desc">
+                    <h3>ล่องเรือแม่น้ำกก (ท่าตอน)</h3>
+                    <p class="dp">แม่น้ำ</p>
+                </div>
+            </div>
+            <div class="box">
+                <a href="AttractionDetail/attraction_detail.php?id=18"><img src="uploads/attractions/doi_lang.jpg"></a>
+                <div class="desc">
+                    <h3>ดอยลาง</h3>
+                    <p class="dp">ภูเขา</p>
+                </div>
+            </div>
+            <div class="box">
+                <a href="AttractionDetail/attraction_detail.php?id=19"><img src="uploads/attractions/wat_sop_fang.jpg"></a>
+                <div class="desc">
+                    <h3>วัดพระธาตุสบฝาง</h3>
+                    <p class="dp">วัด</p>
+                </div>
+            </div>
+            <div class="box">
+                <a href="AttractionDetail/attraction_detail.php?id=46"><img src="uploads/attractions/wat-doi-kaeo.jpg"></a>
+                <div class="desc">
+                    <h3>วัดดอยแก้ว</h3>
+                    <p class="dp">วัด</p>
                 </div>
             </div>
         </div>

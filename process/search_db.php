@@ -110,6 +110,12 @@ if(mysqli_num_rows($result) > 0) {
             <p>ลองใช้คำค้นหาอื่น หรือตรวจสอบตัวสะกด</p>
         </div>
         ';
+    } else {
+        $output = '
+        <div class="col-12 text-center text-muted mt-5">
+            <h4>ไม่พบสถานที่ที่คุณค้นหา :(</h4>
+            <p>ลองใช้คำค้นหาอื่น หรือตรวจสอบตัวสะกด</p>
+        </div>';
     }
 }
 echo $output;
