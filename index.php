@@ -171,7 +171,9 @@ if (isset($_SESSION['userid'])) {
             <hr class="my-4">
             <div class="row" id="search_result"></div>
         </div>
-        <h2>สถานที่ท่องเที่ยว ฝาง</h2>
+        <div class="header-section">
+            <h2>สถานที่ท่องเที่ยว ฝาง</h2>
+        </div>
         <div class="content-place">
             <div class="box">
                 <a href="AttractionDetail/attraction_detail.php?id=11"><img src="uploads/attractions/ban_khop_dong.jpg"></a>
@@ -236,9 +238,7 @@ if (isset($_SESSION['userid'])) {
                     <p class="dp">ฟาร์ม</p>
                 </div>
             </div>
-        </div>
-        <h2>สถานที่ท่องเที่ยว แม่อาย</h2>
-        <div class="content-place">
+            <h2 class="content-text">สถานที่ท่องเที่ยว แม่อาย</h2>
             <div class="box">
                 <a href="AttractionDetail/attraction_detail.php?id=3"><img src="uploads/attractions/wat_thaton.jpg"></a>
                 <div class="desc">

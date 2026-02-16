@@ -41,108 +41,98 @@ if (isset($_SESSION['userid'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&family=Nunito:ital@0;1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/aboutus.css">
 </head>
 <body class="bg-gray-50">
-    <!--<nav class="bg-white shadow-md">
-        <div class="container mx-auto px-6 py-4 flex justify-center items-center">
-            <img src="../assets/image/logo/logo.png" width="50px" height="50px">
-            <a href="#" class="text-2xl font-bold text-green-700">Local Travel</a>
-            <div class="hidden md:flex space-x-6">
-                <a href="../index.html" class="hover:text-green-600">หน้าแรก</a>
-                <a href="about.html" class="text-green-600 font-bold">เกี่ยวกับเรา</a>
-                <a href="contact.html" class="hover:text-green-600">ติดต่อเรา</a>
-            </div>
-        </div>
-    </nav>-->
     <div class="head">
-            <img src="../assets/image/logo/logo.png" width="50px" height="50px" id="logo">
-            <span><h2>Local Travel</h2></span>
-            <?php if(isset($_SESSION['userid'])): ?>
-            <span class="text-black me-3 d-none d-md-block" style="margin-left: auto;">สวัสดี, <?php echo $user_data['username']; ?></span>
-            <a href="#" data-bs-toggle="modal" data-bs-target="#profileModal" class="position-relative">
-                <img src="<?php echo $user_data['profile_image']; ?>" class="rounded-circle border border-2 border-white shadow-sm" style="width: 45px; height: 45px; object-fit: cover;">
-            </a>
-            <?php else : ?>
-            <span class="text-black me-3 d-none d-md-block" style="margin-left: auto;">สวัสดี, Guest</span>
-            <a href="#" data-bs-toggle="modal" data-bs-target="#profileModal" class="position-relative">
-                <img src="<?php echo $user_data['profile_image']; ?>" class="rounded-circle border border-2 border-white shadow-sm" style="width: 45px; height: 45px; object-fit: cover;">
-            </a>
-            <?php endif; ?>
-            <?php if(isset($_SESSION['userid'])): ?>
-            <button id="login" onclick="gotoLogin()" style="display: none;">Login</button>
-            <?php else : ?>
-            <button id="login" onclick="gotoLogin()" style="display: block;">Login</button>
-            <?php endif; ?>
-        </div>
+        <img src="../assets/image/logo/logo.png" width="50px" height="50px" id="logo">
+        <span><h2>Local Travel</h2></span>
         <?php if(isset($_SESSION['userid'])): ?>
-        <div class="modal fade" id="profileModal" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header bg-primary text-white">
-                        <h5 class="modal-title"><i class="fas fa-user-edit"></i> แก้ไขโปรไฟล์</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                    </div>
-                    <form action="process/profile_db.php" method="POST" enctype="multipart/form-data">
-                        <div class="modal-body">
-                            <div class="text-center mb-4">
-                                <img src="<?php echo $user_data['profile_image']; ?>" id="previewImg" class="rounded-circle border shadow" style="width: 120px; height: 120px; object-fit: cover;">
-                                <div class="mt-3">
-                                    <label class="btn btn-sm btn-outline-primary">
-                                        <i class="fas fa-camera"></i> เปลี่ยนรูป
-                                        <input type="file" name="profile_image" id="uploadInput" class="d-none" accept="image/*">
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">ชื่อผู้ใช้</label>
-                                <input type="text" class="form-control bg-light" value="<?php echo $user_data['username']; ?>" readonly>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">อีเมล</label>
-                                    <input type="email" name="email" class="form-control" value="<?php echo $user_data['email']; ?>" required>
-                                </div>
-                            <hr>
-                            <p class="text-muted small mb-2">เปลี่ยนรหัสผ่าน (เว้นว่างไว้ถ้าไม่ต้องการเปลี่ยน)</p>
-                            <div class="row">
-                                <div class="col-6">
-                                    <input type="password" name="new_password" class="form-control form-control-sm" placeholder="รหัสใหม่">
-                                </div>
-                                <div class="col-6">
-                                    <input type="password" name="confirm_password" class="form-control form-control-sm" placeholder="ยืนยันรหัส">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <a href="process/logout.php" class="btn btn-danger me-auto">ออกจากระบบ</a>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ยกเลิก</button>
-                            <button type="submit" name="update_profile" class="btn btn-primary">บันทึก</button>
-                        </div>
-                    </form>
+        <span class="text-black me-3 d-none d-md-block" style="margin-left: auto;">สวัสดี, <?php echo $user_data['username']; ?></span>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#profileModal" class="position-relative">
+            <img src="<?php echo $user_data['profile_image']; ?>" class="rounded-circle border border-2 border-white shadow-sm" style="width: 45px; height: 45px; object-fit: cover;">
+        </a>
+        <?php else : ?>
+        <span class="text-black me-3 d-none d-md-block" style="margin-left: auto;">สวัสดี, Guest</span>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#profileModal" class="position-relative">
+            <img src="<?php echo $user_data['profile_image']; ?>" class="rounded-circle border border-2 border-white shadow-sm" style="width: 45px; height: 45px; object-fit: cover;">
+        </a>
+        <?php endif; ?>
+        <?php if(isset($_SESSION['userid'])): ?>
+        <button id="login" onclick="gotoLogin()" style="display: none;">Login</button>
+        <?php else : ?>
+        <button id="login" onclick="gotoLogin()" style="display: block;">Login</button>
+        <?php endif; ?>
+    </div>
+    <?php if(isset($_SESSION['userid'])): ?>
+    <div class="modal fade" id="profileModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title"><i class="fas fa-user-edit"></i> แก้ไขโปรไฟล์</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
+                <form action="../process/profile_db.php" method="POST" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="text-center mb-4">
+                            <img src="<?php echo $user_data['profile_image']; ?>" id="previewImg" class="rounded-circle border shadow" style="width: 120px; height: 120px; object-fit: cover;">
+                            <div class="mt-3">
+                                <label class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-camera"></i> เปลี่ยนรูป
+                                    <input type="file" name="profile_image" id="uploadInput" class="d-none" accept="image/*">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">ชื่อผู้ใช้</label>
+                            <input type="text" class="form-control bg-light" value="<?php echo $user_data['username']; ?>" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">อีเมล</label>
+                                <input type="email" name="email" class="form-control" value="<?php echo $user_data['email']; ?>" required>
+                            </div>
+                        <hr>
+                        <p class="text-muted small mb-2">เปลี่ยนรหัสผ่าน (เว้นว่างไว้ถ้าไม่ต้องการเปลี่ยน)</p>
+                        <div class="row">
+                            <div class="col-6">
+                                <input type="password" name="new_password" class="form-control form-control-sm" placeholder="รหัสใหม่">
+                            </div>
+                            <div class="col-6">
+                                <input type="password" name="confirm_password" class="form-control form-control-sm" placeholder="ยืนยันรหัส">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="../process/logout.php" class="btn btn-danger me-auto">ออกจากระบบ</a>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ยกเลิก</button>
+                        <button type="submit" name="update_profile" class="btn btn-primary">บันทึก</button>
+                    </div>
+                </form>
             </div>
         </div>
-        <script>
-            document.getElementById('uploadInput').onchange = function (evt) {
-                var tgt = evt.target || window.event.srcElement,
-                files = tgt.files;
+    </div>
+    <script>
+        document.getElementById('uploadInput').onchange = function (evt) {
+            var tgt = evt.target || window.event.srcElement,
+            files = tgt.files;
 
-                if (FileReader && files && files.length) {
-                    var fr = new FileReader();
-                    fr.onload = function () {
-                        document.getElementById('previewImg').src = fr.result;
-                    }
-                    fr.readAsDataURL(files[0]);
+            if (FileReader && files && files.length) {
+                var fr = new FileReader();
+                fr.onload = function () {
+                    document.getElementById('previewImg').src = fr.result;
                 }
+                fr.readAsDataURL(files[0]);
             }
-        </script>
-        <?php endif; ?>
-        <ul>
-            <li><a href="../index.php">หน้าแรก</a></li>
-            <li><a href="aboutus.php">เกี่ยวกับเรา</a></li>
-            <li><a href="contact.php">ติดต่อเรา</a></li>
-        </ul>
+        }
+    </script>
+    <?php endif; ?>
+    <ul>
+        <li><a href="../index.php">หน้าแรก</a></li>
+        <li><a href="aboutus.php">เกี่ยวกับเรา</a></li>
+        <li><a href="contact.php">ติดต่อเรา</a></li>
+    </ul>
     <header class="relative bg-green-800 text-white py-20 text-center">
         <div class="absolute inset-0 bg-cover bg-center opacity-40" style="background-image: url('../uploads/attractions/angkhang.jpg');"></div>
         <div class="relative container mx-auto px-6">
@@ -150,7 +140,6 @@ if (isset($_SESSION['userid'])) {
             <p class="text-lg md:text-xl font-light">สัมผัสวิถีชีวิต ธรรมชาติ และวัฒนธรรมล้านนาที่ฝางและแม่อาย</p>
         </div>
     </header>
-
     <section class="container mx-auto px-6 py-16">
         <div class="flex flex-col md:flex-row items-center gap-12">
             <div class="md:w-1/2">
@@ -170,7 +159,6 @@ if (isset($_SESSION['userid'])) {
             </div>
         </div>
     </section>
-
     <section class="bg-white py-16">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">จุดเด่นของเรา</h2>
