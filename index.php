@@ -171,10 +171,9 @@ if (isset($_SESSION['userid'])) {
             <hr class="my-4">
             <div class="row" id="search_result"></div>
         </div>
-        <div class="header-section">
-            <h2>สถานที่ท่องเที่ยว ฝาง</h2>
-        </div>
+            
         <div class="content-place">
+            <h2>สถานที่ท่องเที่ยว ฝาง</h2>
             <div class="box">
                 <a href="AttractionDetail/attraction_detail.php?id=11"><img src="uploads/attractions/ban_khop_dong.jpg"></a>
                 <div class="desc">
@@ -224,13 +223,13 @@ if (isset($_SESSION['userid'])) {
                     <p class="dp">ถ้ำ</p>
                 </div>
             </div>
-            <div class="box">
+            <!--<div class="box">
                 <a href="AttractionDetail/attraction_detail.php?id=12"><img src="uploads/attractions/doi_san_ju.jpg"></a>
                 <div class="desc">
                     <h3>ดอยสันจุ๊</h3>
                     <p class="dp">ภูเขา</p>
                 </div>
-            </div>
+            </div>-->
             <div class="box">
                 <a href="AttractionDetail/attraction_detail.php?id=9"><img src="uploads/attractions/tea_plantation_2000.jpg"></a>
                 <div class="desc">
@@ -238,7 +237,7 @@ if (isset($_SESSION['userid'])) {
                     <p class="dp">ฟาร์ม</p>
                 </div>
             </div>
-            <h2 class="content-text">สถานที่ท่องเที่ยว แม่อาย</h2>
+            <h2>สถานที่ท่องเที่ยว แม่อาย</h2>
             <div class="box">
                 <a href="AttractionDetail/attraction_detail.php?id=3"><img src="uploads/attractions/wat_thaton.jpg"></a>
                 <div class="desc">
@@ -295,13 +294,13 @@ if (isset($_SESSION['userid'])) {
                     <p class="dp">วัด</p>
                 </div>
             </div>
-            <div class="box">
+            <!--<div class="box">
                 <a href="AttractionDetail/attraction_detail.php?id=46"><img src="uploads/attractions/wat-doi-kaeo.jpg"></a>
                 <div class="desc">
                     <h3>วัดดอยแก้ว</h3>
                     <p class="dp">วัด</p>
                 </div>
-            </div>
+            </div>-->
         </div>
         <script>
             function gotoLogin() {

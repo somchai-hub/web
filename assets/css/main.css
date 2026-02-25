@@ -132,9 +132,10 @@ ul li a:hover {
     overflow: hidden;
 }
 
-.content-place .content-text {
+.content-place h2 {
     font-size: 3em;
     margin-top: 10px;
+    width: 100%;
 }
 
 .content-place .box {
